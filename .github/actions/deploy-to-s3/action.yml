@@ -1,0 +1,23 @@
+name: 'Deploy to S3 Bucket'
+description: 'Syncs files to an AWS S3 bucket'
+inputs:
+  dist-folder:
+    description: 'Path to the dist folder'
+    required: true
+  bucket-name:
+    description: 'Name of the S3 bucket'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Install AWS CLI
+      shell: bash
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y awscli
+    - name: Sync Files to S3
+      shell: bash
+      run: |
+        aws s3 sync ${{ inputs.dist-folder }} s3://${{ inputs.bucket-name }} \
+          --delete \
+          --acl public-read
