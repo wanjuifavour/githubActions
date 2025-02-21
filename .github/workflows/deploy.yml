@@ -36,7 +36,7 @@ jobs:
     - uses: actions/upload-artifact@v4
       with:
         name: dist
-        path: dist/friday-assessment
+        path: dist
 
   deploy:
     needs: build
@@ -57,5 +57,5 @@ jobs:
     - name: Deploy to S3
       uses: ./.github/actions/deploy-to-s3
       with:
-        dist-folder: 'dist/friday-assessment'
+        dist-folder: 'dist'
         bucket-name: ${{ secrets.AWS_S3_BUCKET }}
