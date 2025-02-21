@@ -42,12 +42,13 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/download-artifact@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Download artifact
+      uses: actions/download-artifact@v4
       with:
         name: dist
         path: dist
-    - name: Checkout code
-      uses: actions/checkout@v4
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v2
       with:
