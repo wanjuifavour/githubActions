@@ -36,7 +36,7 @@ jobs:
     - uses: actions/upload-artifact@v4
       with:
         name: dist
-        path: dist/my-angular-app
+        path: dist/friday-assessment
 
   deploy:
     needs: build
@@ -55,5 +55,5 @@ jobs:
     - name: Deploy to S3
       uses: ./.github/actions/deploy-s3
       with:
-        dist-folder: 'dist/my-angular-app'
+        dist-folder: 'dist/friday-assessment'
         bucket-name: ${{ secrets.AWS_S3_BUCKET }}
