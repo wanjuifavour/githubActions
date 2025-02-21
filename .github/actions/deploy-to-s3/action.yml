@@ -13,8 +13,10 @@ runs:
     - name: Install AWS CLI
       shell: bash
       run: |
-        sudo apt-get update
-        sudo apt-get install -y awscli
+        curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+        unzip awscliv2.zip
+        sudo ./aws/install
+        rm -rf awscliv2.zip aws
     - name: Sync Files to S3
       shell: bash
       run: |
