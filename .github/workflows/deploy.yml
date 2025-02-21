@@ -58,5 +58,5 @@ jobs:
     - name: Deploy to S3
       uses: ./.github/actions/deploy-to-s3
       with:
-        dist-folder: 'dist'
+        dist-folder: 'dist/friday-assessment/browser'
         bucket-name: ${{ secrets.AWS_S3_BUCKET }}
